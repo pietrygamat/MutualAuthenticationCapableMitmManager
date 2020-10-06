@@ -11,7 +11,7 @@ configure WebDriver instance to use it.
     File serverCertFile = ...;        // PEM file
     File serverKeyFile = ...;         // PEM file
 
-    org.littleshoot.proxy.impl.DefaultHttpProxyServer.DefaultHttpProxyServer.bootstrap()
+    org.littleshoot.proxy.impl.DefaultHttpProxyServer.bootstrap()
 			.withIdleConnectionTimeout(FIVE_MINUTES)
 			.withName(clientCertFile.getName())
 			.withPort(5555)
