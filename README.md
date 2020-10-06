@@ -12,7 +12,6 @@ configure WebDriver instance to use it.
     File serverKeyFile = ...;         // PEM file
 
     org.littleshoot.proxy.impl.DefaultHttpProxyServer.bootstrap()
-			.withIdleConnectionTimeout(FIVE_MINUTES)
 			.withName(clientCertFile.getName())
 			.withPort(5555)
 			.withAllowLocalOnly(true)
