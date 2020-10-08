@@ -1,10 +1,10 @@
-Mutual Authentication is Selenium
+Mutual Authentication in Selenium
 ---
 
-A simple code that uses LittleProxy as a Man-In-The-Middle proxy to be used by e.g. Selenium to connect to servers that
-require client side certificate, working around the problem of WebDriver not exposing any APIs to select one. To use it, 
-create a proxy server, feed it a client certificate the server accepts and a server certificate the client trusts, then
-configure WebDriver instance to use it.
+A simple piece of code that uses LittleProxy as a Man-In-The-Middle proxy to be used by e.g. Selenium to connect to 
+servers that require client side certificate, working around the problem of WebDriver not exposing any APIs to select 
+one. To use it, create a proxy server, feed it a client certificate the server accepts and a server certificate the 
+client trusts, then configure WebDriver instance to use it.
 
     File clientCertFile = ...;        // client cert as .p12
     char[] clientCertPassword = ...;  // key password 
