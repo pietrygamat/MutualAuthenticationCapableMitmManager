@@ -6,6 +6,10 @@ servers that require client side certificate, working around the problem of WebD
 one. To use it, create a proxy server, feed it a client certificate the server accepts and a server certificate the 
 client trusts, then configure WebDriver instance to use it.
 
+See [a full, self-contained example here](src/test/java/proxy/auth/MutualAuthenticationTest.java).  
+
+Basic usage:
+
     File clientCertFile = ...;        // client cert as .p12
     char[] clientCertPassword = ...;  // key password 
     File serverCertFile = ...;        // PEM file

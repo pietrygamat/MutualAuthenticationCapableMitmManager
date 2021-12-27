@@ -111,7 +111,7 @@ class KeyManagerFactoryProviders {
                 keyStore = KeyStore.getInstance("PKCS12");
                 keyStore.load(null);
                 keyStore.setKeyEntry(
-                        certificate.getSubjectDN().getName(), key,
+                        certificate.getIssuerX500Principal().getName(), key,
                         DEFAULT_PASSWORD, new Certificate[]{certificate});
 
                 KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
