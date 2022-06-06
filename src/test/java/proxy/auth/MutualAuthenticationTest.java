@@ -51,8 +51,6 @@ public class MutualAuthenticationTest {
 
     @Test
     public void testWithChrome() {
-        WebDriverManager.chromedriver().setup();
-
         org.openqa.selenium.Proxy proxy = new Proxy();
         proxy.setSslProxy("localhost:" + proxyPort);
 
@@ -65,6 +63,7 @@ public class MutualAuthenticationTest {
         // Not related to the use of MitM proxy
         options.setAcceptInsecureCerts(true);
 
+        WebDriverManager.chromedriver().setup();
         driver = WebDriverManager.chromedriver().capabilities(options).create();
         driver.get(webserverUrl);
         Assertions.assertEquals("Hello", driver.findElement(By.id("header")).getText());
@@ -72,8 +71,6 @@ public class MutualAuthenticationTest {
 
     @Test
     public void testWithFirefox() {
-        WebDriverManager.firefoxdriver().setup();
-
         org.openqa.selenium.Proxy proxy = new Proxy();
         proxy.setSslProxy("localhost:" + proxyPort);
 
@@ -91,6 +88,7 @@ public class MutualAuthenticationTest {
         // Not related to the use of MitM proxy
         options.setAcceptInsecureCerts(true);
 
+        WebDriverManager.firefoxdriver().setup();
         driver = WebDriverManager.firefoxdriver().capabilities(options).create();
         driver.get(webserverUrl);
         Assertions.assertEquals("Hello", driver.findElement(By.id("header")).getText());
