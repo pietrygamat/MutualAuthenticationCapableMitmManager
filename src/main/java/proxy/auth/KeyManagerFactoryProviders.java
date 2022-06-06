@@ -10,9 +10,9 @@ import proxy.auth.MutualAuthenticationCapableMitmManager.KeyManagerFactoryProvid
 
 import javax.net.ssl.KeyManagerFactory;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.security.Key;
 import java.security.KeyPair;
 import java.security.KeyStore;
@@ -63,7 +63,7 @@ class KeyManagerFactoryProviders {
         public KeyManagerFactory create() {
             try {
                 final KeyStore ks = KeyStore.getInstance("PKCS12");
-                ks.load(new FileInputStream(keyStoreFile), keyStorePassword);
+                ks.load(Files.newInputStream(keyStoreFile.toPath()), keyStorePassword);
                 final KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
                 kmf.init(ks, keyStorePassword);
                 return kmf;

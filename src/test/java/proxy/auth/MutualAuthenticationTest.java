@@ -10,9 +10,7 @@ import org.littleshoot.proxy.HttpProxyServer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -32,6 +30,9 @@ public class MutualAuthenticationTest {
     // client certificate and private key extracted from keystore.example.com.p12
     static final File clientCertFile = new File("src/test/resources/client.example.com.p12");
     static final String clientCertPassword = "changeit";
+
+    // Test webserver started locally for this test
+    static final String webserverUrl = "https://localhost:9443";
 
     static final int proxyPort = 5555;
     static HttpProxyServer proxyServer;
@@ -64,8 +65,8 @@ public class MutualAuthenticationTest {
         // Not related to the use of MitM proxy
         options.setAcceptInsecureCerts(true);
 
-        driver = new ChromeDriver(options);
-        driver.get("https://localhost:8443");
+        driver = WebDriverManager.chromedriver().capabilities(options).create();
+        driver.get(webserverUrl);
         Assertions.assertEquals("Hello", driver.findElement(By.id("header")).getText());
     }
 
@@ -90,8 +91,8 @@ public class MutualAuthenticationTest {
         // Not related to the use of MitM proxy
         options.setAcceptInsecureCerts(true);
 
-        driver = new FirefoxDriver(options);
-        driver.get("https://localhost:8443");
+        driver = WebDriverManager.firefoxdriver().capabilities(options).create();
+        driver.get(webserverUrl);
         Assertions.assertEquals("Hello", driver.findElement(By.id("header")).getText());
     }
 
